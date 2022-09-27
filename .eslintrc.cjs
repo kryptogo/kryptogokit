@@ -8,7 +8,7 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module',
   },
-  extends: ['plugin:jsx-a11y/recommended'],
+  extends: ['rainbow', 'plugin:jsx-a11y/recommended'],
   plugins: ['jsx-a11y'],
   env: {
     es6: true,

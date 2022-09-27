@@ -7,9 +7,9 @@ import {
   darkTheme,
   DisclaimerComponent,
   getDefaultWallets,
+  KryptogoKitProvider,
   lightTheme,
   midnightTheme,
-  KryptogoKitProvider,
   wallet,
 } from '@kryptogo/kryptogokit';
 
@@ -20,7 +20,7 @@ import {
   chain,
   configureChains,
   createClient,
-  useDisconnect,
+  // useDisconnect,
   WagmiConfig,
 } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -153,7 +153,7 @@ const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = typeof modalSizes[number];
 
 function RainbowKitApp({ Component, pageProps }: AppProps) {
-  const { disconnect } = useDisconnect();
+  // const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');

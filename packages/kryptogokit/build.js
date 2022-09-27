@@ -62,11 +62,11 @@ esbuild
     splitting: true, // Required for tree shaking
     watch: isWatching
       ? {
-        onRebuild(error, result) {
-          if (error) console.error('watch build failed:', error);
-          else console.log('watch build succeeded:', result);
-        },
-      }
+          onRebuild(error, result) {
+            if (error) console.error('watch build failed:', error);
+            else console.log('watch build succeeded:', result);
+          },
+        }
       : undefined,
   })
   .then(() => {

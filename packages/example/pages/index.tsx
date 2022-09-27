@@ -5,8 +5,6 @@ import {
   useChainModal,
   useConnectModal,
 } from '@kryptogo/kryptogokit';
-import { GetServerSideProps } from 'next';
-import { unstable_getServerSession } from 'next-auth';
 import React, { ComponentProps, useEffect, useState } from 'react';
 import {
   useAccount,
@@ -16,15 +14,6 @@ import {
   useSignMessage,
   useSignTypedData,
 } from 'wagmi';
-import { getAuthOptions } from './api/auth/[...nextauth]';
-
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  return {
-    props: {
-      session: await unstable_getServerSession(req, res, getAuthOptions(req)),
-    },
-  };
-};
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
@@ -117,8 +106,8 @@ const Example = () => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const ready = mounted && status !== 'loading';
-  const connected = isWagmiConnected && status === 'authenticated';
+  const ready = mounted;
+  const connected = isWagmiConnected;
 
   return (
     <div
