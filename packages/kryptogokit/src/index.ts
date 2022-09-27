@@ -9,3 +9,4 @@ export { getDefaultWallets };
 export { lightTheme } from './themes/lightTheme';
 export { darkTheme } from './themes/darkTheme';
 export { midnightTheme } from './themes/midnightTheme';
+export { default as useHasNft } from './hooks/useHasNft';
