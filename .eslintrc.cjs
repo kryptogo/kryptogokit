@@ -51,5 +51,11 @@ module.exports = {
         'import/no-unresolved': 'off',
       },
     },
+    {
+      files: ['packages/kryptogokit/src/index.ts'],
+      rules: {
+        'import/export': 'off',
+      },
+    },
   ],
 };
