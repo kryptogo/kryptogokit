@@ -1,7 +1,35 @@
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { ModalSizeOptions } from '@rainbow-me/rainbowkit/dist/components/RainbowKitProvider/ModalSizeContext';
-import { RainbowKitProviderProps } from '@rainbow-me/rainbowkit/dist/components/RainbowKitProvider/RainbowKitProvider';
+import {
+  AvatarComponent,
+  DisclaimerComponent,
+  RainbowKitProvider,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+import { ReactNode } from 'react';
 import { lightTheme } from '../../themes/lightTheme';
+
+const ModalSizeOptions = {
+  COMPACT: 'compact',
+  WIDE: 'wide',
+} as const;
+
+type ModalSizes = typeof ModalSizeOptions[keyof typeof ModalSizeOptions];
+
+export interface KryptogoKitProviderProps {
+  chains: RainbowKitChain[];
+  initialChain?: RainbowKitChain | number;
+  id?: string;
+  children: ReactNode;
+  theme?: Theme | null;
+  showRecentTransactions?: boolean;
+  appInfo?: {
+    appName?: string;
+    learnMoreUrl?: string;
+    disclaimer?: DisclaimerComponent;
+  };
+  coolMode?: boolean;
+  avatar?: AvatarComponent;
+  modalSize?: ModalSizes;
+}
 
 const defaultTheme = lightTheme();
 
@@ -16,7 +44,7 @@ export function KryptogoKitProvider({
   coolMode = false,
   avatar,
   modalSize = ModalSizeOptions.WIDE,
-}: RainbowKitProviderProps) {
+}: KryptogoKitProviderProps) {
   return RainbowKitProvider({
     appInfo,
     avatar,

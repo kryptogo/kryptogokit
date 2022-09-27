@@ -1,4 +1,4 @@
-import { RainbowKitProvider as KryptogoKitProvider } from '@rainbow-me/rainbowkit';
+import { KryptogoKitProvider } from './components/KryptogoKitProvider/KryptogoKitProvider';
 import { getDefaultWallets } from './wallets/getDefaultWallets';
 
 export * from '@rainbow-me/rainbowkit';

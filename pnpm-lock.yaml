@@ -69,6 +69,19 @@ importers:
       vitest: 0.5.9
       wagmi: 0.6.6_ir3quccc6i62x6qn6jjhyjjiey
 
+  examples/with-next:
+    specifiers:
+      '@kryptogo/kryptogokit': workspace:*
+      eslint: ^8.15.0
+      eslint-config-next: ^12.1.6
+      ethers: ^5.0.0
+    dependencies:
+      '@kryptogo/kryptogokit': link:../../packages/kryptogokit
+      ethers: 5.7.1
+    devDependencies:
+      eslint: 8.24.0
+      eslint-config-next: 12.3.1_eslint@8.24.0
+
   packages/create-kryptogokit:
     specifiers:
       '@types/fs-extra': 9.0.13

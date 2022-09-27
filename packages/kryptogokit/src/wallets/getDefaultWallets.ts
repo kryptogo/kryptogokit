@@ -7,10 +7,8 @@ import {
 import { kryptogo } from './walletConnectors/kryptogo/kryptogo';
 
 export const getDefaultWallets = ({
-  appName,
   chains,
 }: {
-  appName: string;
   chains: Chain[];
 }): {
   connectors: ReturnType<typeof connectorsForWallets>;
@@ -19,15 +17,10 @@ export const getDefaultWallets = ({
   const wallets: WalletList = [
     {
       groupName: 'Recommended',
-      wallets: [kryptogo({ chains }), wallet.walletConnect({ chains })],
-    },
-    {
-      groupName: 'Other',
       wallets: [
+        kryptogo({ chains }),
         wallet.metaMask({ chains }),
-        wallet.rainbow({ chains }),
-        wallet.trust({ chains }),
-        wallet.coinbase({ appName, chains }),
+        wallet.walletConnect({ chains }),
       ],
     },
   ];

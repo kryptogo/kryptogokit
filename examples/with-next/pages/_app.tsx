@@ -1,7 +1,12 @@
-import '../styles/globals.css';
+import '../styles/global.css';
 import '@kryptogo/kryptogokit/styles.css';
 import type { AppProps } from 'next/app';
-import { KryptogoKitProvider, getDefaultWallets } from '@kryptogo/kryptogokit';
+import {
+  KryptogoKitProvider,
+  getDefaultWallets,
+  connectorsForWallets,
+  wallet,
+} from '@kryptogo/kryptogokit';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -17,18 +22,34 @@ const { chains, provider, webSocketProvider } = configureChains(
       : []),
   ],
   [
-    alchemyProvider({
-      // This is Alchemy's default API key.
-      // You can get your own at https://dashboard.alchemyapi.io
-      apiKey: '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC',
-    }),
+    alchemyProvider({ apiKey: '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC' }),
     publicProvider(),
   ]
 );
 
-const { connectors } = getDefaultWallets({
+const appName = 'KryptoGOKit Demo';
+const { wallets } = getDefaultWallets({
   chains,
 });
+
+const demoAppInfo = {
+  appName,
+};
+
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      wallet.rainbow({ chains }),
+      wallet.trust({ chains }),
+      wallet.coinbase({ appName, chains }),
+      wallet.argent({ chains }),
+      wallet.trust({ chains }),
+      wallet.ledger({ chains }),
+    ],
+  },
+]);
 
 const wagmiClient = createClient({
   autoConnect: true,
@@ -40,7 +61,7 @@ const wagmiClient = createClient({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
-      <KryptogoKitProvider chains={chains}>
+      <KryptogoKitProvider appInfo={demoAppInfo} chains={chains}>
         <Component {...pageProps} />
       </KryptogoKitProvider>
     </WagmiConfig>
