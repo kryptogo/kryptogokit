@@ -1,0 +1,5 @@
+packages:
+  - 'packages/*'
+  - 'packages/create-kryptogokit/**/*-app'
+  - 'site'
+  - 'examples/*'
