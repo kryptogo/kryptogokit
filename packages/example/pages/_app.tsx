@@ -139,6 +139,7 @@ const accentColors = [
   'pink',
   'purple',
   'red',
+  'kryptogo',
   'custom',
 ] as const;
 type AccentColor = typeof accentColors[number];
@@ -157,7 +158,8 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
-  const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
+  const [selectedAccentColor, setAccentColor] =
+    useState<AccentColor>('kryptogo');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
   const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
