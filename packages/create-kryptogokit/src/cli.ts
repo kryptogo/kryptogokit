@@ -72,7 +72,7 @@ async function run() {
     if (!projectPath) {
       log();
       const { value } = await prompts({
-        initial: 'my-rainbowkit-app',
+        initial: 'my-kryptogokit-app',
         message: 'What is the name of your project?',
         name: 'value',
         type: 'text',
@@ -141,7 +141,7 @@ async function run() {
 
     log(
       chalk.cyan(
-        `🚀 Creating a new RainbowKit app in ${chalk.bold(targetPath)}`
+        `🚀 Creating a new KryptoGOKit app in ${chalk.bold(targetPath)}`
       )
     );
 
@@ -162,8 +162,8 @@ async function run() {
     pkgJson.version = '0.1.0';
 
     if (process.env.INSTALL_WORKSPACE_KRYPTOGOKIT !== 'true') {
-      // Remove RainbowKit workspace dependency so we can install latest
-      delete pkgJson.dependencies['@rainbow-me/rainbowkit'];
+      // Remove KryptoGOKit workspace dependency so we can install latest
+      delete pkgJson.dependencies['@kryptogo/kryptogokit'];
     }
 
     await fs.writeFile(
@@ -196,7 +196,7 @@ async function run() {
         packageManager,
         [
           packageManager === 'yarn' ? 'add' : 'install',
-          '@rainbow-me/rainbowkit',
+          '@kryptogo/kryptogokit',
         ],
         {
           cwd: targetPath,
@@ -216,13 +216,13 @@ async function run() {
           'commit',
           '--no-verify',
           '--message',
-          'Initial commit from create-rainbowkit',
+          'Initial commit from create-kryptogokit',
         ],
         { cwd: targetPath }
       );
     }
 
-    log(chalk.green(`💎 Done! Thanks for using RainbowKit 🙏`));
+    log(chalk.green(`💎 Done! Thanks for using KryptoGOKit 🙏`));
     log();
     log(
       chalk.cyan(
