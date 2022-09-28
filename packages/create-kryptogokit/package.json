@@ -1,5 +1,5 @@
 {
-  "name": "@kryptogokit/create-kryptogokit",
+  "name": "@kryptogo/create-kryptogokit",
   "description": "Scaffold a new KryptoGOKit project",
   "version": "0.1.1",
   "files": [

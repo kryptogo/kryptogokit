@@ -33,7 +33,8 @@
     "release:test": "pnpm release:build && pnpm --filter example dev",
     "ci:example": "pnpm --filter @kryptogo/kryptogokit* prepare && pnpm --filter example build",
     "ci:site": "pnpm --filter @kryptogo/kryptogokit* prepare && pnpm --filter site build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "publish": "pnpm release:verify-git && pnpm release:build && pnpm publish packages/kryptogokit && pnpm publish packages/kryptogokit-siwe-next-auth && pnpm publish packages/create-kryptogokit"
   },
   "keywords": [],
   "author": "",
