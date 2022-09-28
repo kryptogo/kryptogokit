@@ -26,7 +26,7 @@ import {
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
-const RAINBOW_TERMS = 'https://www.kryptogo.com/company/legal';
+const KRYPTOGO_TERMS = 'https://www.kryptogo.com/company/legal';
 
 const avalancheChain: Chain = {
   blockExplorers: {
@@ -64,20 +64,21 @@ const { chains, provider, webSocketProvider } = configureChains(
   ]
 );
 
+const appName = 'KryptoGOKit Demo';
 const { wallets } = getDefaultWallets({
   chains,
 });
 
 const demoAppInfo = {
-  appName: 'Rainbowkit Demo',
+  appName,
 };
 
 const DisclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
   return (
     <Text>
       By connecting, you agree to this demo&apos;s{' '}
-      <Link href={RAINBOW_TERMS}>Terms of Service</Link> and acknowledge you
-      have read and understand our <Link href={RAINBOW_TERMS}>Disclaimer</Link>
+      <Link href={KRYPTOGO_TERMS}>Terms of Service</Link> and acknowledge you
+      have read and understand our <Link href={KRYPTOGO_TERMS}>Disclaimer</Link>
     </Text>
   );
 };
@@ -105,10 +106,11 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
+      wallet.rainbow({ chains }),
+      wallet.trust({ chains }),
+      wallet.coinbase({ appName, chains }),
       wallet.argent({ chains }),
       wallet.trust({ chains }),
-      wallet.steak({ chains }),
-      wallet.imToken({ chains }),
       wallet.ledger({ chains }),
     ],
   },
@@ -152,7 +154,7 @@ type OverlayBlur = typeof overlayBlurs[number];
 const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = typeof modalSizes[number];
 
-function RainbowKitApp({ Component, pageProps }: AppProps) {
+function KryptogoKitApp({ Component, pageProps }: AppProps) {
   // const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
@@ -179,7 +181,7 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
-  // Note: Non-RainbowKit providers are wrapped around this component
+  // Note: Non-KryptogoKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
   // component can use their corresponding Hooks.
   return (
@@ -211,7 +213,7 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
                 fontFamily: 'sans-serif',
               }}
             >
-              <h3>RainbowKitProvider props</h3>
+              <h3>KryptoGOKitProvider props</h3>
               <table cellSpacing={12}>
                 <tbody>
                   <tr>
@@ -492,10 +494,10 @@ export default function App(appProps: AppProps) {
   return (
     <>
       <Head>
-        <title>RainbowKit Example</title>
+        <title>KryptoGOKit Example</title>
       </Head>
       <WagmiConfig client={wagmiClient}>
-        <RainbowKitApp {...appProps} />
+        <KryptogoKitApp {...appProps} />
       </WagmiConfig>
     </>
   );

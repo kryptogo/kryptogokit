@@ -1,0 +1,46 @@
+{
+  "name": "@kryptogo/kryptogokit-siwe-next-auth",
+  "version": "0.0.1",
+  "description": "KryptoGOKit authentication adapter for Sign-In with Ethereum and NextAuth.js",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=12.4"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "build:watch": "node build.js --watch",
+    "dev": "pnpm build:watch & pnpm typegen:watch",
+    "prepare": "pnpm build",
+    "prebuild": "pnpm typegen",
+    "typecheck": "pnpm tsc --noEmit",
+    "typegen": "tsc --emitDeclarationOnly || true",
+    "typegen:watch": "tsc --emitDeclarationOnly --watch"
+  },
+  "keywords": [],
+  "author": "KryptoGO",
+  "license": "MIT",
+  "peerDependencies": {
+    "@kryptogo/kryptogokit": "0.5.x || 0.6.x",
+    "next-auth": "^4.10.2",
+    "react": ">=17",
+    "siwe": "^1.1.6"
+  },
+  "devDependencies": {
+    "@kryptogo/kryptogokit": "workspace:*",
+    "siwe": "^1.1.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kryptogo/kryptogokit.git",
+    "directory": "packages/kryptogokit-siwe-next-auth"
+  }
+}
