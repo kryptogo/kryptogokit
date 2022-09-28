@@ -1,15 +1,21 @@
 import { ConnectButton, useHasNft } from '@kryptogo/kryptogokit';
 import type { NextPage } from 'next';
+import { useState, useEffect } from 'react';
 import { useAccount } from 'wagmi';
 
 const NftAmountPage: NextPage = () => {
-  const { address } = useAccount();
+  const account = useAccount();
+  const [connected, setConnected] = useState(false);
   const { amount, loading, error } = useHasNft({
-    ownerAddress: address ?? '',
+    ownerAddress: account.address ?? '',
     alchemyApiKey: '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC',
-    contractAddress: '0xa6916545a56f75acd43fb6a1527a73a41d2b4081',
-    chain: 'ethereum',
+    contractAddress: '0xa82fa2c0fd1fc6bb964d9302d3507b88a5f1b8d0',
+    chain: 'polygon',
   });
+
+  useEffect(() => {
+    setConnected(account.status == 'connected' && account.address != '');
+  }, [account]);
 
   return (
     <>
@@ -22,14 +28,17 @@ const NftAmountPage: NextPage = () => {
       >
         <ConnectButton />
       </div>
-      <div>
-        {!address && <div>You are not connected</div>}
-        {loading && <div>Loading...</div>}
-        {error && <div>Error: {error.message}</div>}
-        {address && !loading && !error && (
-          <div>You have {amount} Demi Human NFTs</div>
-        )}
-      </div>
+      {!connected ? (
+        <div>You are not connected</div>
+      ) : (
+        <div>
+          {loading && <div>Loading...</div>}
+          {error && <div>Error: {error?.message ?? error}</div>}
+          {!loading && !error && (
+            <div>You have {amount} KryptoGO Yacht Club NFTs</div>
+          )}
+        </div>
+      )}
     </>
   );
 };
