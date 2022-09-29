@@ -2,6 +2,7 @@
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
 import * as esbuild from 'esbuild';
+import { copy } from 'esbuild-plugin-copy';
 import postcss from 'postcss';
 import prefixSelector from 'postcss-prefix-selector';
 import readdir from 'recursive-readdir-files';
@@ -58,6 +59,15 @@ esbuild
           }));
         },
       },
+      copy({
+        assets: {
+          from: ['./node_modules/@rainbow-me/rainbowkit/dist/index.css'],
+          to: ['./dist/index.css'],
+        },
+        // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
+        // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.
+        resolveFrom: 'cwd',
+      }),
     ],
     splitting: true, // Required for tree shaking
     watch: isWatching
