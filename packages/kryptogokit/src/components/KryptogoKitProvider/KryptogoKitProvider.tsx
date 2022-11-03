@@ -45,6 +45,12 @@ export function KryptogoKitProvider({
   avatar,
   modalSize = ModalSizeOptions.WIDE,
 }: KryptogoKitProviderProps) {
+  if (appInfo?.learnMoreUrl == null) {
+    appInfo = {
+      ...appInfo,
+      learnMoreUrl: 'https://kryptogo.com/wallet',
+    };
+  }
   return RainbowKitProvider({
     appInfo,
     avatar,
