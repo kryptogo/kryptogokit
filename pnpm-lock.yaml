@@ -23,6 +23,7 @@ importers:
       '@wagmi/core': ^0.4.2
       esbuild: ^0.14.39
       esbuild-plugin-copy: ^1.3.0
+      esbuild-plugin-inline-image: ^0.0.9
       eslint: 7.32.0
       eslint-config-rainbow: ^3.0.0
       eslint-plugin-jsx-a11y: ^6.5.1
@@ -56,6 +57,7 @@ importers:
       '@wagmi/core': 0.4.9_react@18.2.0
       esbuild: 0.14.54
       esbuild-plugin-copy: 1.3.0_esbuild@0.14.54
+      esbuild-plugin-inline-image: 0.0.9
       eslint: 7.32.0
       eslint-config-rainbow: 3.0.0_7nbltn5lmsqxrhwnebqbwwm3u4
       eslint-plugin-jsx-a11y: 6.6.1_eslint@7.32.0
@@ -3994,6 +3996,10 @@ packages:
       esbuild: 0.14.54
       fs-extra: 10.1.0
       globby: 11.1.0
+    dev: true
+
+  /esbuild-plugin-inline-image/0.0.9:
+    resolution: {integrity: sha512-pw3ZgN2phh32Z7BpKrhRDtmI+iVCl+Gc0BLOT9croXg1MnMjRuN7aXhIQirhLeK39erkIwfFlhy6xieroBGc1Q==}
     dev: true
 
   /esbuild-sunos-64/0.14.54:

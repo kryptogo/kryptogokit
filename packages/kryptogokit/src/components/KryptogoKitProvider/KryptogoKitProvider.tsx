@@ -6,6 +6,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { ReactNode } from 'react';
 import { lightTheme } from '../../themes/lightTheme';
+import { DogeAvatar } from '../Avatar/DogeAvatar';
 
 const ModalSizeOptions = {
   COMPACT: 'compact',
@@ -50,6 +51,9 @@ export function KryptogoKitProvider({
       ...appInfo,
       learnMoreUrl: 'https://kryptogo.com/wallet',
     };
+  }
+  if (avatar == null) {
+    avatar = DogeAvatar;
   }
   return RainbowKitProvider({
     appInfo,
