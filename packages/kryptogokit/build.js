@@ -3,6 +3,7 @@ import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
 import * as esbuild from 'esbuild';
 import { copy } from 'esbuild-plugin-copy';
+import inlineImage from 'esbuild-plugin-inline-image';
 import postcss from 'postcss';
 import prefixSelector from 'postcss-prefix-selector';
 import readdir from 'recursive-readdir-files';
@@ -49,6 +50,7 @@ esbuild
           return result.css;
         },
       }),
+      inlineImage(),
       {
         name: 'make-all-packages-external',
         setup(build) {
